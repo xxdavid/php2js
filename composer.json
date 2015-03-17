@@ -1,0 +1,17 @@
+{
+    "name": "xxdavid/php2js",
+    "license": "MIT",
+    "require": {
+        "nikic/php-parser": "~1.1"
+    },
+    "require-dev": {
+        "kevinlebrun/colors.php": "~0.4",
+        "tracy/tracy": "~2.3",
+        "nette/finder": "~2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Php2js\\": "src/"
+    }
+  }
+}

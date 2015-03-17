@@ -1,0 +1,8 @@
+{
+  "name": "php2js",
+  "version": "0.0.1",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-shell": "^0.4.0"
+  }
+}

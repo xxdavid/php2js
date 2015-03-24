@@ -1,30 +1,19 @@
 <?php
 namespace Php2js\Expression;
 
-use Php2js\NodeDispatcher;
+use Php2js\AbstractTranspiler;
+use Php2js\NodesDispatcher;
 use PhpParser\Node;
 
-class ConcatTranspiler
+class ConcatTranspiler extends AbstractTranspiler
 {
-    private $node;
-
-    /**
-     * @param Node $node
-     */
-    public function __construct(Node $node)
-    {
-        $this->node = $node;
-    }
-
     /**
      * @return string
      */
     public function transpile()
     {
-        $expressions = array_map(function ($value) {
-            $object = new NodeDispatcher($value);
-            return $object->dispatch();
-        }, [$this->node->left, $this->node->right]);
+        $dispatcher = new NodesDispatcher([$this->node->left, $this->node->right]);
+        $expressions = $dispatcher->dispatch();
         return $expressions[0] . ' + ' . $expressions[1];
     }
 }

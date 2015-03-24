@@ -1,32 +1,11 @@
 <?php
 namespace Php2js\Statement;
 
+use Php2js\AbstractDispatcher;
 use PhpParser\Node;
 
-class StatementDispatcher
+class StatementDispatcher extends AbstractDispatcher
 {
-    /** @var  Node */
-    private $node;
-
-    /** @var  string */
-    private $type;
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * @param Node $node
-     */
-    public function setNode($node)
-    {
-        $this->node = $node;
-    }
-
     /**
      * @return string
      */
@@ -37,7 +16,7 @@ class StatementDispatcher
                 $transpiler = new EchoTranspiler($this->node);
                 break;
             default:
-                throw new NotImplementedException("'" . $this->node->getType() . "' not implemented.");
+                $this->throwNotImplementedException();
                 break;
         }
         return $transpiler->transpile();

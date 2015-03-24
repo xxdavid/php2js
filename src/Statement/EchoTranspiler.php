@@ -2,6 +2,7 @@
 namespace Php2js\Statement;
 
 use Php2js\NodeDispatcher;
+use Php2js\NodesDispatcher;
 use PhpParser\Node;
 
 class EchoTranspiler
@@ -22,12 +23,9 @@ class EchoTranspiler
      */
     public function transpile()
     {
-        $expressions = $this->node->exprs;
+        $dispatcher = new NodesDispatcher($this->node->exprs);
+        $expressions = $dispatcher->dispatch();
 
-        $expressions = array_map(function ($value) {
-            $object = new NodeDispatcher($value);
-            return $object->dispatch();
-        }, $expressions);
 
         return 'console.log(' . implode(' + ', $expressions) . ');';
     }

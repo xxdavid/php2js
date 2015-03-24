@@ -1,32 +1,11 @@
 <?php
 namespace Php2js\Scalar;
 
+use Php2js\AbstractDispatcher;
 use PhpParser\Node;
 
-class ScalarDispatcher
+class ScalarDispatcher extends AbstractDispatcher
 {
-    /** @var  Node */
-    private $node;
-
-    /** @var  string */
-    private $type;
-
-    /**
-     * @param mixed $node
-     */
-    public function setNode(Node $node)
-    {
-        $this->node = $node;
-    }
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
     /**
      * @return string
      */
@@ -34,10 +13,10 @@ class ScalarDispatcher
     {
         switch ($this->type) {
             case 'String':
-                $object = new StringTranspiler($this->node);
-                return $object->transpile();
+                $transpiler = new StringTranspiler($this->node);
+                return $transpiler->transpile();
             default:
-                throw new NotImplementedException("'" . $this->node->getType() . "' not implemented.");
+                $this->throwNotImplementedException();
                 break;
         }
     }

@@ -5,6 +5,7 @@ use Nette\Utils\Finder;
 use Php2js\Transpiler;
 use Tracy\Debugger;
 use Colors\Color;
+use Php2js\Exceptions\NotImplementedException;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -23,21 +24,29 @@ foreach ($files as $phpFilePath => $phpFileInfo) {
     if (!file_exists($jsFilePath)) {
         throw new \Exception('Not defined JS result file for: ' . $name);
     }
-    $result = $transpiler->transpile(file_get_contents($phpFilePath));
-    $expected = file_get_contents($jsFilePath);
-    if ($result === $expected) {
-        echo $color('.')->green();
-    } else {
-        echo $color('F')->red();
-        $failures[] = [$name, $result, $expected];
+    try {
+        $result = $transpiler->transpile(file_get_contents($phpFilePath));
+        $expected = file_get_contents($jsFilePath);
+        if ($result === $expected) {
+            echo $color('.')->green();
+        } else {
+            echo $color('F')->red();
+            $failures[] = $color->apply('red', $name) // $color($name)->red() doesn't work; don't know why
+                .  $color(' failed:')->light_red() . "\n"
+                . $color($result)->white()->bg_red()
+                .$color("\nShould be:\n")->yellow()
+                . $color($expected)->white()->bg_green();
+        }
+    } catch (NotImplementedException $e) {
+        $failures[] = $color->apply('red', $name)
+            .  $color(' failed:')->light_red() . "\n"
+            . $color($e->getMessage())->red();
     }
 }
 
 foreach ($failures as $failure) {
     echo "\n\n";
-    echo $color($failure[0])->red(), $color(" failed:\n")->light_red();
-    echo $color($failure[1])->white()->bg_red(), $color("\nShould be:\n")->yellow(), $color($failure[2])->white()->bg_green();
-    ;
+    echo $failure;
 }
 
 if ($failures) {

@@ -37,7 +37,7 @@ class StatementDispatcher
                 $transpiler = new EchoTranspiler($this->node);
                 break;
             default:
-                throw new \Exception('Not implemented: ' . $this->type);
+                throw new NotImplementedException("'" . $this->node->getType() . "' not implemented.");
                 break;
         }
         return $transpiler->transpile();

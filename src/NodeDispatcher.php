@@ -1,6 +1,7 @@
 <?php
 namespace Php2js;
 
+use Php2js\Exceptions\NotImplementedException;
 use Php2js\Scalar\ScalarDispatcher;
 use Php2js\Statement\StatementDispatcher;
 use PhpParser\Node;
@@ -33,7 +34,7 @@ class NodeDispatcher
                 $dispatcher = new ScalarDispatcher();
                 break;
             default:
-                throw new \Exception('Not implemented: ' . $type[0]);
+                throw new NotImplementedException("'" . $this->node->getType() . "' not implemented.");
                 break;
         }
 

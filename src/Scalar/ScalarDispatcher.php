@@ -37,7 +37,7 @@ class ScalarDispatcher
                 $object = new StringTranspiler($this->node);
                 return $object->transpile();
             default:
-                throw new \Exception('Not implemented: ' . $this->type);
+                throw new NotImplementedException("'" . $this->node->getType() . "' not implemented.");
                 break;
         }
     }

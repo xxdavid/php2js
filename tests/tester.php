@@ -38,6 +38,7 @@ foreach ($files as $phpFilePath => $phpFileInfo) {
                 . $color($expected)->white()->bg_green();
         }
     } catch (NotImplementedException $e) {
+        echo $color('F')->red();
         $failures[] = $color->apply('red', $name)
             .  $color(' failed:')->light_red() . "\n"
             . $color($e->getMessage())->red();

@@ -14,10 +14,17 @@ class ScalarDispatcher extends AbstractDispatcher
         switch ($this->type) {
             case 'String':
                 $transpiler = new StringTranspiler($this->node);
-                return $transpiler->transpile();
+                break;
+            case 'LNumber':
+                $transpiler = new NumberTranspiler($this->node);
+                break;
+            case 'DNumber':
+                $transpiler = new NumberTranspiler($this->node);
+                break;
             default:
                 $this->throwNotImplementedException();
                 break;
         }
+        return $transpiler->transpile();
     }
 }

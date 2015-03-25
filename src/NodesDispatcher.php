@@ -8,6 +8,9 @@ class NodesDispatcher
     /** @var  Node[] */
     private $nodes;
 
+    /** @var  callable */
+    private $postHooks = [];
+
     /**
      * @param Node[] $nodes
      */
@@ -16,11 +19,29 @@ class NodesDispatcher
         $this->nodes = $nodes;
     }
 
+    /**
+     * @return array
+     * @throws Exceptions\NotImplementedException
+     */
     public function dispatch()
     {
-        return array_map(function ($node) {
+        $transpiledNodes = [];
+        foreach ($this->nodes as $node) {
             $dispatcher = new NodeDispatcher($node);
-            return $dispatcher->dispatch();
-        }, $this->nodes);
+            $result = $dispatcher->dispatch();
+            foreach ($this->postHooks as $hook) {
+                $result = $hook($node, $result);
+            }
+            $transpiledNodes[] = $result;
+        }
+        return $transpiledNodes;
+    }
+
+    /**
+     * @param callable $function
+     */
+    public function addPostTranspilationHook($function)
+    {
+        $this->postHooks[] = $function;
     }
 }

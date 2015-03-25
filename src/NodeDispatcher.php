@@ -43,7 +43,8 @@ class NodeDispatcher
         }
 
         $dispatcher->setNode($this->node);
-        $dispatcher->setType(array_pop($type));
+        array_shift($type);
+        $dispatcher->setType(implode('_', $type));
         return $dispatcher->dispatch();
     }
 }

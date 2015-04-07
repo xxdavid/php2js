@@ -26,25 +26,7 @@ class NodeDispatcher
      */
     public function dispatch()
     {
-        $type = explode('_', $this->node->getType());
-        switch ($type[0]) {
-            case 'Stmt':
-                $dispatcher = new StatementDispatcher();
-                break;
-            case 'Scalar':
-                $dispatcher = new ScalarDispatcher();
-                break;
-            case 'Expr':
-                $dispatcher = new ExpressionDispatcher();
-                break;
-            default:
-                throw new NotImplementedException("'" . $this->node->getType() . "' not implemented.");
-                break;
-        }
-
-        $dispatcher->setNode($this->node);
-        array_shift($type);
-        $dispatcher->setType(implode('_', $type));
-        return $dispatcher->dispatch();
+        $transpiler = TranspilerFactory::create($this->node);
+        return $transpiler->transpile();
     }
 }

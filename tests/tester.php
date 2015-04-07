@@ -15,9 +15,13 @@ Debugger::timer();
 $transpiler = new Transpiler();
 $color = new Color();
 $color->setForceStyle(true);
-$files = Finder::findFiles('*.php')->exclude('tester.php')->from(__DIR__);
 $failures = [];
 
+if (count($argv) > 1) {
+    $files = [$argv[1] => new SplFileInfo($argv[1])];
+} else {
+    $files = Finder::findFiles('*.php')->exclude('tester.php')->from(__DIR__);
+}
 foreach ($files as $phpFilePath => $phpFileInfo) {
     $jsFilePath = rtrim($phpFilePath, '.php') . '.js';
     $name = substr(rtrim($phpFilePath, '.php'), strlen(__DIR__) + 1);

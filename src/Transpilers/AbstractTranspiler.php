@@ -38,7 +38,7 @@ abstract class AbstractTranspiler
         $this->configuration = $configuration;
     }
 
-    private function setScope($scope)
+    protected function setScope($scope)
     {
         $this->scope = $scope;
     }

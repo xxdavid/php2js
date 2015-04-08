@@ -14,7 +14,7 @@ class FileTranspiler extends AbstractTranspiler
     public function __construct(array $ast)
     {
         $this->ast = $ast;
-        $this->scope = $this;
+        $this->setScope($this);
     }
 
     /**

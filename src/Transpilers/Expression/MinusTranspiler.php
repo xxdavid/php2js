@@ -1,10 +1,10 @@
 <?php
-namespace Php2js\Expression;
+namespace Php2js\Transpilers\Expression;
 
-use Php2js\AbstractTranspiler;
+use Php2js\Transpilers\AbstractTranspiler;
 use Php2js\NodesDispatcher;
 
-class PowerTranspiler extends AbstractTranspiler
+class MinusTranspiler extends AbstractTranspiler
 {
     /**
      * @return string
@@ -13,7 +13,7 @@ class PowerTranspiler extends AbstractTranspiler
     {
         $dispatcher = new NodesDispatcher([$this->node->left, $this->node->right]);
         $dispatcher->setContext($this);
-        $expression = $dispatcher->dispatch();
-        return "Math.pow($expression[0], $expression[1])";
+        $expressions = $dispatcher->dispatch();
+        return $expressions[0] . ' - ' . $expressions[1];
     }
 }

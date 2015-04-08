@@ -1,11 +1,10 @@
 <?php
-namespace Php2js\Expression;
+namespace Php2js\Transpilers\Expression;
 
-use Php2js\AbstractTranspiler;
+use Php2js\Transpilers\AbstractTranspiler;
 use Php2js\NodesDispatcher;
-use PhpParser\Node;
 
-class ConcatTranspiler extends AbstractTranspiler
+class PlusTranspiler extends AbstractTranspiler
 {
     /**
      * @return string

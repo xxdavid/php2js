@@ -1,7 +1,7 @@
 <?php
-namespace Php2js\Scalar;
+namespace Php2js\Transpilers\Scalar;
 
-use Php2js\AbstractTranspiler;
+use Php2js\Transpilers\AbstractTranspiler;
 use PhpParser\Node;
 
 class StringTranspiler extends AbstractTranspiler

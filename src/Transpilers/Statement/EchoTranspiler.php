@@ -1,7 +1,7 @@
 <?php
-namespace Php2js\Statement;
+namespace Php2js\Transpilers\Statement;
 
-use Php2js\AbstractTranspiler;
+use Php2js\Transpilers\AbstractTranspiler;
 use Php2js\NodeDispatcher;
 use Php2js\NodesDispatcher;
 use PhpParser\Node;

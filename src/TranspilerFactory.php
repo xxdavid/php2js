@@ -33,7 +33,7 @@ class TranspilerFactory
         if (!array_key_exists($type, self::$transpilersMap)) {
             throw new NotImplementedException("'" . $node->getType() . "' not implemented.");
         }
-        $className = "\\Php2js\\" . self::$transpilersMap[$type] . 'Transpiler';
+        $className = "\\Php2js\\Transpilers\\" . self::$transpilersMap[$type] . 'Transpiler';
         $transpiler = new $className($node);
         $transpiler->setContext($context);
         return $transpiler;

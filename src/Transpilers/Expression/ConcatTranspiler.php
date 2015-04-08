@@ -1,10 +1,11 @@
 <?php
-namespace Php2js\Expression;
+namespace Php2js\Transpilers\Expression;
 
-use Php2js\AbstractTranspiler;
+use Php2js\Transpilers\AbstractTranspiler;
 use Php2js\NodesDispatcher;
+use PhpParser\Node;
 
-class MinusTranspiler extends AbstractTranspiler
+class ConcatTranspiler extends AbstractTranspiler
 {
     /**
      * @return string
@@ -14,6 +15,6 @@ class MinusTranspiler extends AbstractTranspiler
         $dispatcher = new NodesDispatcher([$this->node->left, $this->node->right]);
         $dispatcher->setContext($this);
         $expressions = $dispatcher->dispatch();
-        return $expressions[0] . ' - ' . $expressions[1];
+        return $expressions[0] . ' + ' . $expressions[1];
     }
 }

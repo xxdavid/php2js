@@ -1,5 +1,5 @@
 <?php
-namespace Php2js;
+namespace Php2js\Transpilers;
 
 use PhpParser\Node;
 

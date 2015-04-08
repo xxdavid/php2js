@@ -1,11 +1,11 @@
 <?php
-namespace Php2js\Expression;
+namespace Php2js\Transpilers\Expression;
 
-use Php2js\AbstractTranspiler;
+use Php2js\Transpilers\AbstractTranspiler;
 use Php2js\NodesDispatcher;
 use PhpParser\Node;
 
-class MultiplicationTranspiler extends AbstractTranspiler
+class ModulusTranspiler extends AbstractTranspiler
 {
     /**
      * @return string
@@ -21,6 +21,7 @@ class MultiplicationTranspiler extends AbstractTranspiler
             return $result;
         });
         $expressions = $dispatcher->dispatch();
-        return $expressions[0] . ' * ' . $expressions[1];
+        //dump($this->node->left);
+        return $expressions[0] . ' % ' . $expressions[1];
     }
 }

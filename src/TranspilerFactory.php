@@ -1,7 +1,9 @@
 <?php
 namespace Php2js;
 
+use Php2js\Exceptions\ContextNotProvidedException;
 use Php2js\Exceptions\NotImplementedException;
+use Php2js\Transpilers\AbstractTranspiler;
 use PhpParser\Node;
 
 class TranspilerFactory
@@ -29,6 +31,9 @@ class TranspilerFactory
      */
     public static function create(Node $node, $context)
     {
+        if ($context === null) {
+            throw new ContextNotProvidedException('You have to provide the context');
+        }
         $type = $node->getType();
         if (!array_key_exists($type, self::$transpilersMap)) {
             throw new NotImplementedException("'" . $node->getType() . "' not implemented.");

@@ -16,7 +16,6 @@ class EchoTranspiler extends AbstractTranspiler
         $dispatcher->setContext($this);
         $expressions = $dispatcher->dispatch();
 
-
         return 'console.log(' . implode(' + ', $expressions) . ');';
     }
 }

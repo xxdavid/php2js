@@ -1,0 +1,3 @@
+<?php
+$emoticon = ':)';
+$emoticon = ':))))))))))';

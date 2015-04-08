@@ -1,0 +1,3 @@
+var variable;
+
+variable = "value";

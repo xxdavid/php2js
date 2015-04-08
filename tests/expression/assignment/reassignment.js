@@ -1,0 +1,4 @@
+var emoticon;
+
+emoticon = ":)";
+emoticon = ":))))))))))";

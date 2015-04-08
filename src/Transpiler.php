@@ -19,6 +19,7 @@ class Transpiler
 
         $transpiler = new FileTranspiler($ast);
         $transpiler->setConfiguration($this->configuration);
+        $transpiler->setVariableManager(new VariableManager());
         $result = $transpiler->transpile();
 
         return $result;

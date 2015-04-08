@@ -20,7 +20,8 @@ class TranspilerFactory
         'Expr_BinaryOp_Pow' => 'Expression\Power',
         'Scalar_LNumber' => 'Scalar\Number',
         'Scalar_DNumber' => 'Scalar\Number',
-
+        'Expr_Assign' => 'Expression\Assignment',
+        'Expr_Variable' => 'Expression\Variable',
     ];
 
     /**

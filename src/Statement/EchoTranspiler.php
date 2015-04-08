@@ -1,23 +1,13 @@
 <?php
 namespace Php2js\Statement;
 
+use Php2js\AbstractTranspiler;
 use Php2js\NodeDispatcher;
 use Php2js\NodesDispatcher;
 use PhpParser\Node;
 
-class EchoTranspiler
+class EchoTranspiler extends AbstractTranspiler
 {
-    /** @var Node */
-    private $node;
-
-    /**
-     * @param Node $node
-     */
-    public function __construct(Node $node)
-    {
-        $this->node = $node;
-    }
-
     /**
      * @return string
      */

@@ -1,20 +1,11 @@
 <?php
 namespace Php2js\Scalar;
 
+use Php2js\AbstractTranspiler;
 use PhpParser\Node;
 
-class StringTranspiler
+class StringTranspiler extends AbstractTranspiler
 {
-    private $node;
-
-    /**
-     * @param Node $node
-     */
-    public function __construct(Node $node)
-    {
-        $this->node = $node;
-    }
-
     /**
      * @return string
      * @TODO: escape

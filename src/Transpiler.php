@@ -5,7 +5,7 @@ use Php2js\Transpilers\FileTranspiler;
 
 class Transpiler
 {
-    public $configuration;
+    private $configuration;
 
     /**
      * @param $phpCodeString
@@ -18,7 +18,7 @@ class Transpiler
         $ast = $parser->parse($phpCode);
 
         $transpiler = new FileTranspiler($ast);
-        $transpiler->setContext($this);
+        $transpiler->setConfiguration($this->configuration);
         $result = $transpiler->transpile();
 
         return $result;

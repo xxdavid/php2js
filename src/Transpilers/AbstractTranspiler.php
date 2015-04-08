@@ -22,6 +22,11 @@ abstract class AbstractTranspiler
      */
     public function setContext($context)
     {
-        $this->configuration = $context->configuration;
+        $this->setConfiguration($context->configuration);
+    }
+
+    public function setConfiguration($configuration)
+    {
+        $this->configuration = $configuration;
     }
 }

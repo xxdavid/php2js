@@ -11,6 +11,8 @@ class NodesDispatcher
     /** @var  callable */
     private $postHooks = [];
 
+    private $context;
+
     /**
      * @param Node[] $nodes
      */
@@ -28,6 +30,7 @@ class NodesDispatcher
         $transpiledNodes = [];
         foreach ($this->nodes as $node) {
             $dispatcher = new NodeDispatcher($node);
+            $dispatcher->setContext($this->context);
             $result = $dispatcher->dispatch();
             foreach ($this->postHooks as $hook) {
                 $result = $hook($node, $result);
@@ -43,5 +46,13 @@ class NodesDispatcher
     public function addPostTranspilationHook($function)
     {
         $this->postHooks[] = $function;
+    }
+
+    /**
+     * @param $context
+     */
+    public function setContext($context)
+    {
+        $this->context = $context;
     }
 }

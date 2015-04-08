@@ -14,6 +14,7 @@ class EchoTranspiler extends AbstractTranspiler
     public function transpile()
     {
         $dispatcher = new NodesDispatcher($this->node->exprs);
+        $dispatcher->setContext($this);
         $expressions = $dispatcher->dispatch();
 
 

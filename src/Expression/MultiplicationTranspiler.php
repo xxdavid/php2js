@@ -13,6 +13,7 @@ class MultiplicationTranspiler extends AbstractTranspiler
     public function transpile()
     {
         $dispatcher = new NodesDispatcher([$this->node->left, $this->node->right]);
+        $dispatcher->setContext($this);
         $dispatcher->addPostTranspilationHook(function (Node $node, $result) {
             if ($node->getType() == 'Expr_BinaryOp_Plus' || $node->getType() == 'Expr_BinaryOp_Minus') {
                 return '(' . $result . ')';

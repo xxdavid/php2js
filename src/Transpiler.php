@@ -3,6 +3,8 @@ namespace Php2js;
 
 class Transpiler
 {
+    public $configuration;
+
     /**
      * @param $phpCodeString
      * @throws \Exception
@@ -16,6 +18,7 @@ class Transpiler
         $result = '';
         foreach ($ast as $node) {
             $dispatcher = new NodeDispatcher($node);
+            $dispatcher->setContext($this);
             $result .= $dispatcher->dispatch();
             if ($node !== end($ast)) {
                 $result .= "\n";

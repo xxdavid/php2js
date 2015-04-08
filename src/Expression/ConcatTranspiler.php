@@ -13,6 +13,7 @@ class ConcatTranspiler extends AbstractTranspiler
     public function transpile()
     {
         $dispatcher = new NodesDispatcher([$this->node->left, $this->node->right]);
+        $dispatcher->setContext($this);
         $expressions = $dispatcher->dispatch();
         return $expressions[0] . ' + ' . $expressions[1];
     }

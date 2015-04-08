@@ -11,8 +11,8 @@ class PowerTranspiler extends AbstractTranspiler
      */
     public function transpile()
     {
-        //        dump($this->node);
         $dispatcher = new NodesDispatcher([$this->node->left, $this->node->right]);
+        $dispatcher->setContext($this);
         $expression = $dispatcher->dispatch();
         return "Math.pow($expression[0], $expression[1])";
     }

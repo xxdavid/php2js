@@ -1,7 +1,6 @@
 <?php
 namespace Php2js;
 
-use Php2js\Exceptions\NotImplementedException;
 use Php2js\Scalar\ScalarDispatcher;
 use Php2js\Expression\ExpressionDispatcher;
 use Php2js\Statement\StatementDispatcher;
@@ -11,6 +10,8 @@ class NodeDispatcher
 {
     /** @var  Node */
     private $node;
+
+    private $context;
 
     /**
      * @param $node
@@ -26,7 +27,15 @@ class NodeDispatcher
      */
     public function dispatch()
     {
-        $transpiler = TranspilerFactory::create($this->node);
+        $transpiler = TranspilerFactory::create($this->node, $this->context);
         return $transpiler->transpile();
+    }
+
+    /**
+     * @param $context
+     */
+    public function setContext($context)
+    {
+        $this->context = $context;
     }
 }

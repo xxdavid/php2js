@@ -1,9 +1,6 @@
 <?php
 namespace Php2js;
 
-use Php2js\Scalar\ScalarDispatcher;
-use Php2js\Expression\ExpressionDispatcher;
-use Php2js\Statement\StatementDispatcher;
 use PhpParser\Node;
 
 class NodeDispatcher

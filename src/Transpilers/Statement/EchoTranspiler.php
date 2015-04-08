@@ -2,7 +2,6 @@
 namespace Php2js\Transpilers\Statement;
 
 use Php2js\Transpilers\AbstractTranspiler;
-use Php2js\NodeDispatcher;
 use Php2js\NodesDispatcher;
 use PhpParser\Node;
 

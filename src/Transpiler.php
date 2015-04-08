@@ -1,6 +1,8 @@
 <?php
 namespace Php2js;
 
+use Php2js\Transpilers\FileTranspiler;
+
 class Transpiler
 {
     public $configuration;
@@ -15,15 +17,9 @@ class Transpiler
 
         $ast = $parser->parse($phpCode);
 
-        $result = '';
-        foreach ($ast as $node) {
-            $dispatcher = new NodeDispatcher($node);
-            $dispatcher->setContext($this);
-            $result .= $dispatcher->dispatch();
-            if ($node !== end($ast)) {
-                $result .= "\n";
-            }
-        }
+        $transpiler = new FileTranspiler($ast);
+        $transpiler->setContext($this);
+        $result = $transpiler->transpile();
 
         return $result;
     }

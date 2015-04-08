@@ -1,13 +1,12 @@
 <?php
 namespace Php2js\Transpilers;
 
+use Php2js\AbstractScope;
 use Php2js\NodesDispatcher;
+use Php2js\VariableManager;
 
-class FileTranspiler extends AbstractTranspiler
+class FileTranspiler extends AbstractScope
 {
-    /** @var array */
-    private $prependArray = [];
-
     /**
      * @param array $node
      */
@@ -15,6 +14,7 @@ class FileTranspiler extends AbstractTranspiler
     {
         $this->ast = $ast;
         $this->setScope($this);
+        $this->variableManager = new VariableManager();
     }
 
     /**
@@ -32,10 +32,5 @@ class FileTranspiler extends AbstractTranspiler
         }
         $result .= join("\n", $transpiledAst);
         return $result;
-    }
-
-    public function prepend($stringToPrepend)
-    {
-        $this->prependArray[] = $stringToPrepend;
     }
 }

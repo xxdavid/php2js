@@ -30,7 +30,6 @@ abstract class AbstractTranspiler
     {
         $this->setConfiguration($context->configuration);
         $this->setScope($context->scope);
-        $this->setVariableManager($context->variableManager);
     }
 
     public function setConfiguration($configuration)
@@ -46,7 +45,7 @@ abstract class AbstractTranspiler
     /**
      * @param VariableManager $variableManager
      */
-    public function setVariableManager($variableManager)
+    protected function setVariableManager($variableManager)
     {
         $this->variableManager = $variableManager;
     }

@@ -11,9 +11,9 @@ class VariableTranspiler extends AbstractTranspiler
     public function transpile()
     {
         $variableName = $this->node->name;
-        if (!$this->variableManager->checkIfDeclared($variableName)) {
+        if (!$this->scope->variableManager->checkIfDeclared($variableName)) {
             $this->scope->prepend("var $variableName;");
-            $this->variableManager->addToDeclared($variableName);
+            $this->scope->variableManager->addToDeclared($variableName);
         }
         return $variableName;
     }

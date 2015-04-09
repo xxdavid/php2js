@@ -5,9 +5,9 @@
         "nikic/php-parser": "~1.1"
     },
     "require-dev": {
-        "kevinlebrun/colors.php": "~0.4",
         "tracy/tracy": "~2.3",
-        "nette/finder": "~2.3"
+        "nette/finder": "~2.3",
+        "symfony/console": "~2.6"
     },
     "autoload": {
         "psr-4": {

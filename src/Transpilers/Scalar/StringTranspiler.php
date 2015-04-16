@@ -11,6 +11,7 @@ class StringTranspiler extends AbstractTranspiler
      */
     public function transpile()
     {
-        return '"' . $this->node->value . '"';
+        $quotes = $this->configuration->doubleQuotes ? '"' : "'";
+        return $quotes . $this->node->value . $quotes;
     }
 }

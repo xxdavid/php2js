@@ -5,7 +5,13 @@ use Php2js\Transpilers\FileTranspiler;
 
 class Transpiler
 {
+    /** @var Configuration */
     private $configuration;
+
+    public function __construct()
+    {
+        $this->configuration = new Configuration();
+    }
 
     /**
      * @param $phpCodeString
@@ -22,5 +28,13 @@ class Transpiler
         $result = $transpiler->transpile();
 
         return $result;
+    }
+
+    /**
+     * @param Configuration $configuration
+     */
+    public function setConfiguration($configuration)
+    {
+        $this->configuration = $configuration;
     }
 }

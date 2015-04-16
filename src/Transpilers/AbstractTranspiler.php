@@ -1,6 +1,7 @@
 <?php
 namespace Php2js\Transpilers;
 
+use Php2js\Configuration;
 use Php2js\VariableManager;
 use PhpParser\Node;
 
@@ -8,6 +9,7 @@ abstract class AbstractTranspiler
 {
     protected $node;
 
+    /** @var Configuration */
     protected $configuration;
 
     protected $scope;

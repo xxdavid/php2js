@@ -58,5 +58,10 @@ class TestCommand extends Command
         $runner->runTests();
 
         $output->writeln('Completed in ' . round(Debugger::timer(), 2) . ' seconds');
+        if ($runner->failed()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

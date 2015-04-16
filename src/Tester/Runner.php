@@ -144,4 +144,9 @@ EOF
             }
         }
     }
+
+    public function failed()
+    {
+        return (count($this->failures) > 0);
+    }
 }

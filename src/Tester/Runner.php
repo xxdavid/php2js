@@ -1,10 +1,12 @@
 <?php
 namespace Php2js\Tester;
 
+use Php2js\Configuration;
 use Php2js\Tester\Entities\Failure;
 use Php2js\Transpiler;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Yaml\Yaml;
 
 class Runner
 {
@@ -36,11 +38,20 @@ class Runner
     public function runTests()
     {
         $this->setupColors();
-        $transpiler = new Transpiler();
         foreach ($this->tests as $basePath) {
+            $transpiler = new Transpiler();
             $name = Helpers::stripPrefix($basePath, $this->testsRoot);
             $phpPath = $basePath . '.php';
             $jsPath = $basePath . '.js';
+            $yamlPath = $basePath . '.yml';
+            if (file_exists($yamlPath)) {
+                $configuration = new Configuration();
+                $yaml = Yaml::parse(file_get_contents($yamlPath));
+                foreach ($yaml as $option => $value) {
+                    $configuration->$option = $value;
+                }
+                $transpiler->setConfiguration($configuration);
+            }
             if (file_exists($jsPath)) {
                 $expected = file_get_contents($jsPath);
                 $generated = $transpiler->transpile(file_get_contents($phpPath));

@@ -2,7 +2,8 @@
     "name": "xxdavid/php2js",
     "license": "MIT",
     "require": {
-        "nikic/php-parser": "~1.1"
+        "nikic/php-parser": "~1.1",
+        "symfony/yaml": "~2.6"
     },
     "require-dev": {
         "tracy/tracy": "~2.3",

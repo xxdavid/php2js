@@ -3,7 +3,6 @@ namespace Php2js\Transpilers\Expression;
 
 use Php2js\Transpilers\AbstractTranspiler;
 use Php2js\NodesDispatcher;
-use PhpParser\Node;
 
 class ConcatTranspiler extends AbstractTranspiler
 {

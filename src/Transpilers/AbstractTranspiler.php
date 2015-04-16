@@ -24,9 +24,9 @@ abstract class AbstractTranspiler
     }
 
     /**
-     * @param $context
+     * @param AbstractTranspiler $context
      */
-    public function setContext($context)
+    public function setContext(AbstractTranspiler $context)
     {
         $this->setConfiguration($context->configuration);
         $this->setScope($context->scope);

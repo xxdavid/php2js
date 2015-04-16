@@ -4,7 +4,6 @@ namespace Php2js\Tester\Commands;
 use Nette\Utils\Finder;
 use Php2js\Tester\Helpers;
 use Php2js\Tester\Runner;
-use Php2js\Tester\Tester;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

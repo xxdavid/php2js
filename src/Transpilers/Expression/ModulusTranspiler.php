@@ -21,7 +21,6 @@ class ModulusTranspiler extends AbstractTranspiler
             return $result;
         });
         $expressions = $dispatcher->dispatch();
-        //dump($this->node->left);
         return $expressions[0] . ' % ' . $expressions[1];
     }
 }

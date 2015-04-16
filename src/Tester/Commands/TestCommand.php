@@ -50,7 +50,7 @@ class TestCommand extends Command
                 $runner->addTest($basePath);
             } else {
                 $output->writeln("<error>The given path isn't valid</error>");
-                return;
+                return 1;
             }
         }
 

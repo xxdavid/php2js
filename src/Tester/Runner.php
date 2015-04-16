@@ -22,6 +22,9 @@ class Runner
     /** @var Failure[] */
     private $failures = [];
 
+    /** @var array */
+    private $skipped = [];
+
     public function __construct()
     {
         $this->testsRoot = Tester::getPhp2jsRoot() . 'tests/';
@@ -48,6 +51,11 @@ class Runner
                 $configuration = new Configuration();
                 $yaml = Yaml::parse(file_get_contents($yamlPath));
                 foreach ($yaml as $option => $value) {
+                    if ($option === 'skip') {
+                        $this->skipped[] = $name;
+                        $this->writeSkip();
+                        continue 2;
+                    }
                     $configuration->$option = $value;
                 }
                 $transpiler->setConfiguration($configuration);
@@ -67,6 +75,8 @@ class Runner
         }
         $this->output->writeln('');
         $this->output->writeln('');
+        $this->writeSkippedList();
+
         if ($this->failures) {
             $this->writeFailuresExplanation();
             $this->output->writeln('');
@@ -125,6 +135,11 @@ class Runner
         $this->output->write('<failure>F</failure>');
     }
 
+    private function writeSkip()
+    {
+        $this->output->write('S');
+    }
+
     /**
      * @param string $expected
      * @param string $generated
@@ -159,5 +174,22 @@ EOF
     public function failed()
     {
         return (count($this->failures) > 0);
+    }
+
+    private function writeSkippedList()
+    {
+        $count = count($this->skipped);
+        switch ($count) {
+            case 0: return;
+            case 1:
+                $this->output->writeln(reset($this->skipped) . ' has been skipped.');
+                break;
+            default:
+                $this->output->writeln($count . ' tests have been skipped:');
+                foreach ($this->skipped as $name) {
+                    $this->output->writeln('  - ' . $name);
+                }
+        }
+        $this->output->writeln('');
     }
 }

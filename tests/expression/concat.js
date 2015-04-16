@@ -1,1 +1,1 @@
-console.log("Lorem" + " " + "Ipsum");
+console.log('Lorem' + ' ' + 'Ipsum');

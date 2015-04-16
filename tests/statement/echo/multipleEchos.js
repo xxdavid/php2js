@@ -1,2 +1,2 @@
-console.log("PHP");
-console.log("JS");
+console.log('PHP');
+console.log('JS');

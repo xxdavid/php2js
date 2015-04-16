@@ -1,4 +1,4 @@
 var emoticon;
 
-emoticon = ":)";
-emoticon = ":))))))))))";
+emoticon = ':)';
+emoticon = ':))))))))))';

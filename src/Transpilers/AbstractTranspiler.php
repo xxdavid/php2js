@@ -43,12 +43,4 @@ abstract class AbstractTranspiler
     {
         $this->scope = $scope;
     }
-
-    /**
-     * @param VariableManager $variableManager
-     */
-    protected function setVariableManager($variableManager)
-    {
-        $this->variableManager = $variableManager;
-    }
 }

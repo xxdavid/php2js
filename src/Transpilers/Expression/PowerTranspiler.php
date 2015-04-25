@@ -1,19 +1,13 @@
 <?php
 namespace Php2js\Transpilers\Expression;
 
-use Php2js\Transpilers\AbstractTranspiler;
-use Php2js\NodesDispatcher;
-
-class PowerTranspiler extends AbstractTranspiler
+class PowerTranspiler extends AbstractLeftRightTranspiler
 {
     /**
      * @return string
      */
-    public function transpile()
+    public function join($left, $right)
     {
-        $dispatcher = new NodesDispatcher([$this->node->left, $this->node->right]);
-        $dispatcher->setContext($this);
-        $expression = $dispatcher->dispatch();
-        return "Math.pow($expression[0], $expression[1])";
+        return "Math.pow($left, $right)";
     }
 }

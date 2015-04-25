@@ -1,19 +1,13 @@
 <?php
 namespace Php2js\Transpilers\Expression;
 
-use Php2js\NodesDispatcher;
-use Php2js\Transpilers\AbstractTranspiler;
-
-class XorTranspiler extends AbstractTranspiler
+class XorTranspiler extends AbstractLeftRightTranspiler
 {
     /**
      * @return string
      */
-    public function transpile()
+    public function join($left, $right)
     {
-        $dispatcher = new NodesDispatcher([$this->node->left, $this->node->right]);
-        $dispatcher->setContext($this);
-        list($left, $right) = $dispatcher->dispatch();
         return "($left && !($right)) || (!($left) && $right)";
     }
 }

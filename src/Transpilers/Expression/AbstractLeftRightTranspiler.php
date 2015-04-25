@@ -7,7 +7,7 @@ use Php2js\Transpilers\AbstractTranspiler;
 abstract class AbstractLeftRightTranspiler extends AbstractTranspiler
 {
     /**
-     * @param string$left
+     * @param string $left
      * @param string $right
      * @return string
      */

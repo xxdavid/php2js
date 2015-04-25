@@ -9,7 +9,7 @@ class IndentationManager
     /**
      * @param Configuration $configuration
      */
-    public function __construct($configuration)
+    public function __construct(Configuration $configuration)
     {
         switch ($configuration->indentationStyle) {
             case 'tab':

@@ -2,6 +2,7 @@
 namespace Php2js\Transpilers;
 
 use Php2js\Configuration;
+use Php2js\IndentationManager;
 use Php2js\VariableManager;
 use PhpParser\Node;
 
@@ -16,6 +17,9 @@ abstract class AbstractTranspiler
 
     /** @var VariableManager */
     protected $variableManager;
+
+    /** @var IndentationManager */
+    protected $indentationManager;
 
     /**
      * @param Node $node
@@ -32,6 +36,7 @@ abstract class AbstractTranspiler
     {
         $this->setConfiguration($context->configuration);
         $this->setScope($context->scope);
+        $this->indentationManager = $context->indentationManager;
     }
 
     public function setConfiguration($configuration)

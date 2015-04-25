@@ -1,5 +1,7 @@
 <?php
-namespace Php2js\Transpilers\Expression;
+namespace Php2js\Transpilers\Expression\Operators\Comparison;
+
+use Php2js\Transpilers\Expression\AbstractLeftRightTranspiler;
 
 class SmallerTranspiler extends AbstractLeftRightTranspiler
 {

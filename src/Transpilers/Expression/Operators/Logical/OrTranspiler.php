@@ -1,5 +1,7 @@
 <?php
-namespace Php2js\Transpilers\Expression;
+namespace Php2js\Transpilers\Expression\Operators\Logical;
+
+use Php2js\Transpilers\Expression\AbstractLeftRightTranspiler;
 
 class OrTranspiler extends AbstractLeftRightTranspiler
 {

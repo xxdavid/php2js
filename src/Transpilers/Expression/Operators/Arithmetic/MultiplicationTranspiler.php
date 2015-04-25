@@ -1,5 +1,5 @@
 <?php
-namespace Php2js\Transpilers\Expression;
+namespace Php2js\Transpilers\Expression\Operators\Arithmetic;
 
 use Php2js\Transpilers\AbstractTranspiler;
 use Php2js\NodesDispatcher;

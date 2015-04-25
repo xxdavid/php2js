@@ -22,6 +22,23 @@ class TranspilerFactory
         'Scalar_DNumber' => 'Scalar\Number',
         'Expr_Assign' => 'Expression\Assignment',
         'Expr_Variable' => 'Expression\Variable',
+        'Expr_BinaryOp_Equal' => 'Expression\Equal',
+        'Expr_BinaryOp_NotEqual' => 'Expression\NotEqual',
+        'Expr_BinaryOp_Identical' => 'Expression\Identical',
+        'Expr_BinaryOp_NotIdentical' => 'Expression\NotIdentical',
+        'Expr_BinaryOp_LogicalAnd' => 'Expression\And',
+        'Expr_BinaryOp_BooleanAnd' => 'Expression\And',
+        'Expr_BinaryOp_LogicalOr' => 'Expression\Or',
+        'Expr_BinaryOp_BooleanOr' => 'Expression\Or',
+        'Expr_BinaryOp_LogicalXor' => 'Expression\Xor',
+        'Expr_BooleanNot' => 'Expression\Negation',
+        'Expr_BinaryOp_Greater' => 'Expression\Greater',
+        'Expr_BinaryOp_GreaterOrEqual' => 'Expression\GreaterOrEqual',
+        'Expr_BinaryOp_Smaller' => 'Expression\Smaller',
+        'Expr_BinaryOp_SmallerOrEqual' => 'Expression\SmallerOrEqual',
+        'Stmt_If' => 'Statement\If',
+        'Stmt_ElseIf' => 'Statement\If',
+        'Expr_ConstFetch' => 'Expression\Constant',
     ];
 
     /**
